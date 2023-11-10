@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <title>Main page</title>
+</head>
+
+<body>
+    <div class="welcome-name center">
+        <h1>{% if name %} Welcome {{ name }} {% else %} Please log in {% endif %}</h1>
+        {% block navbar %} {% if name %}
+        <form action="{{ url_for('logout') }}">
+            <input type="submit" value="Log out">
+        </form>
+        {% else %}
+        <form action="{{ url_for('login') }}">
+            <input type="submit" value="Log in">
+        </form>
+        {% endif %} {% endblock %} {% block content %} {% endblock %}
+    </div>
+</body>
+
+</html>
